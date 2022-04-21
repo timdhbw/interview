@@ -10,6 +10,7 @@ class SecurityConfiguration : WebSecurityConfigurerAdapter() {
 
     override fun configure(http: HttpSecurity?) {
 //        super.configure(http)
-        http?.authorizeRequests()?.antMatchers("api/*")?.permitAll()?.antMatchers("users/*")?.permitAll()
+        http?.cors()?.and()?.csrf()?.disable()
+        http?.authorizeRequests()?.antMatchers("/api/users/test")?.permitAll()?.antMatchers("/api/users/register")?.permitAll()
     }
 }

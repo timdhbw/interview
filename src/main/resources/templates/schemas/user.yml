@@ -1,7 +1,7 @@
 type: object
 name: User
 properties:
-  userId:
+  id:
     type: integer
   username:
     type: string

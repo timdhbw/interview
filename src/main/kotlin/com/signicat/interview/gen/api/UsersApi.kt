@@ -8,13 +8,25 @@ package com.signicat.interview.gen.api
 import com.signicat.interview.gen.api.model.UserDto
 import org.springframework.http.ResponseEntity
 import org.springframework.validation.annotation.Validated
-import org.springframework.web.bind.annotation.*
+import org.springframework.web.bind.annotation.RequestBody
+import org.springframework.web.bind.annotation.RequestMapping
+import org.springframework.web.bind.annotation.RequestMethod
 
 @Validated
 @RequestMapping("\${api.base-path:/api}")
 interface UsersApi {
 
     fun getDelegate(): UsersApiDelegate = object: UsersApiDelegate {}
+
+
+    @RequestMapping(
+            method = [RequestMethod.GET],
+            value = ["/users/test"],
+            produces = ["application/json"]
+    )
+    fun getTest(): ResponseEntity<kotlin.String> {
+        return getDelegate().getTest();
+    }
 
 
     @RequestMapping(

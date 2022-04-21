@@ -1,8 +1,8 @@
 package com.signicat.interview.domain
 
 class UserGroup (
-    val id: Int?,
-    val name: String
+    var id: Int?,
+    var name: String
 ) {
     constructor(): this(null, "")
 }

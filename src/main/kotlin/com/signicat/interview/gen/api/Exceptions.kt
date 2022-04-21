@@ -21,5 +21,4 @@ class DefaultExceptionHandler {
     @ExceptionHandler(value = [NotImplementedError::class])
     fun onNotImplemented(ex: NotImplementedError, response: HttpServletResponse): Unit =
         response.sendError(HttpStatus.NOT_IMPLEMENTED.value())
-
 }

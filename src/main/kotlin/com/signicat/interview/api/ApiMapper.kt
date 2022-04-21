@@ -1,9 +1,13 @@
 package com.signicat.interview.api
 
 import com.signicat.interview.domain.Subject
+import com.signicat.interview.domain.UserGroup
 import com.signicat.interview.gen.api.model.UserDto
+import org.mapstruct.AfterMapping
 import org.mapstruct.Mapper
 import org.mapstruct.Mapping
+import org.mapstruct.TargetType
+import java.util.stream.Collectors
 
 @Mapper
 interface ApiMapper {

@@ -5,11 +5,12 @@ import javax.persistence.*
 @Table(name = "user_group")
 @Entity
 class UserGroupEntity(
+    @Id @GeneratedValue(strategy = GenerationType.IDENTITY) var id: Long? = null,
     var name: String,
     @ManyToMany @JoinTable(
         name = "subject_user_group",
         joinColumns = [JoinColumn(name = "user_group_id", referencedColumnName = "id")],
-        inverseJoinColumns = [JoinColumn(name = "subject_id", referencedColumnName = "id")]) var users: MutableSet<SubjectEntity>,
-    @Id @GeneratedValue var id: Long? = null) {
-    constructor(): this("", mutableSetOf(), null)
+        inverseJoinColumns = [JoinColumn(name = "subject_id", referencedColumnName = "id")]) var users: MutableSet<SubjectEntity>
+    ) {
+    constructor(): this(null, "", mutableSetOf())
 }

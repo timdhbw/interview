@@ -19,6 +19,15 @@ interface UsersApiDelegate {
     fun getRequest(): Optional<NativeWebRequest> = Optional.empty()
 
     /**
+     * @see UsersApi#getTest
+     */
+    fun getTest(): ResponseEntity<kotlin.String> {
+        return ResponseEntity(HttpStatus.NOT_IMPLEMENTED)
+
+    }
+
+
+    /**
      * @see UsersApi#registerUser
      */
     fun registerUser(userDto: UserDto): ResponseEntity<UserDto> {

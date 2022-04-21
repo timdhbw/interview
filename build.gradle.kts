@@ -36,7 +36,7 @@ dependencies {
     testImplementation("org.springframework.boot:spring-boot-starter-test")
     testImplementation("org.springframework.kafka:spring-kafka-test")
     testImplementation("org.springframework.security:spring-security-test")
-    kapt("org.mapstruct:mapstruct-processor:1.3.1.Final")
+    kapt("org.mapstruct:mapstruct-processor:1.5.0.RC1")
 }
 
 allOpen {
