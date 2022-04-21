@@ -1,0 +1,51 @@
+openapi: 3.0.0
+info:
+  title: User API
+  description: Api to register a user and create a login
+  version: 0.9.0
+servers:
+  - url: http://localhost:8080/api
+    description: http
+  - url: https://localhost:8080/api
+    description: https
+paths:
+  /users/register:
+    post:
+      summary: Register a user.
+      description: User object that will be created
+      operationId: registerUser
+      requestBody:
+        description: User Entity
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: 'schemas/user.yml'
+      responses:
+        '200':
+          description: Registered User
+          content:
+            application/json:
+              schema:
+                $ref: 'schemas/user.yml'
+  /users/test:
+     get:
+       summary: Test
+       operationId: getTest
+       responses:
+         '200':
+           description: Test Request
+           content:
+             application/json:
+               schema:
+                 type: string
+
+components:
+  securitySchemes:
+    jwt:
+      type: http
+      description: JWT Authentication
+      scheme: bearer
+      bearerFormat: JWT
+security:
+  - jwt: [ ]

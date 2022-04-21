@@ -1,4 +1,6 @@
 spring:
+  main:
+    allow-bean-definition-overriding: true
   jpa:
     properties:
       hibernate:
@@ -9,3 +11,8 @@ spring:
     url: ${DB_HOST:jdbc:postgresql://localhost:5432/postgres}
     username: ${DATABASE_USERNAME:postgres}
     password: ${DATABASE_PASSWORD:postgres}
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"

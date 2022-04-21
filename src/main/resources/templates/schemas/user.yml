@@ -1,0 +1,14 @@
+type: object
+name: User
+properties:
+  userId:
+    type: integer
+  username:
+    type: string
+  password:
+    type: string
+  userGroupNames:
+    type: array
+    items:
+      type: string
+

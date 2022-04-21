@@ -1,0 +1,8 @@
+type: object
+name: UserGroup
+properties:
+  userGroupId:
+    type: integer
+  userGroupName:
+    type: string
+
