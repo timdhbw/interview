@@ -5,4 +5,5 @@ import com.signicat.interview.domain.Subject
 interface UserService {
 
     fun registerUser(user: Subject): Subject?
+
 }

@@ -10,7 +10,8 @@ class UserGroupEntity(
     @ManyToMany @JoinTable(
         name = "subject_user_group",
         joinColumns = [JoinColumn(name = "user_group_id", referencedColumnName = "id")],
-        inverseJoinColumns = [JoinColumn(name = "subject_id", referencedColumnName = "id")]) var users: MutableSet<SubjectEntity>
+        inverseJoinColumns = [JoinColumn(name = "subject_id", referencedColumnName = "id")]) var users: MutableSet<SubjectEntity>,
+    var defaultUser: Boolean
     ) {
-    constructor(): this(null, "", mutableSetOf())
+    constructor(): this(null, "", mutableSetOf(), true)
 }
