@@ -28,7 +28,7 @@ class UserGroupServiceImpl @Autowired constructor(
 
     override fun getUserGroupsForUserGroupKeys(userGroupKeys: List<String>?): Set<UserGroup> {
         if (userGroupKeys == null || userGroupKeys.isEmpty()) {
-            return mutableSetOf()
+            return getDefaultUserGroups()
         }
         val uGs: MutableSet<UserGroup> = userGroupKeys.stream()
             .map(this::getUserGroupByKey)

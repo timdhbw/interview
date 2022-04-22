@@ -21,8 +21,6 @@ class UserRepositoryServiceImpl @Autowired constructor(
 
     override fun save(user: User?): User? {
         val entity: SubjectEntity = jpaMapper.toEntity(user) ?: return null
-        val logger: Logger = LoggerFactory.getLogger(UserRepositoryServiceImpl::class.java.name)
-        logger.info("(Repository)Register User: {}", entity)
         return jpaMapper.toDomain(rep.save(entity))
     }
 
@@ -35,9 +33,14 @@ class UserRepositoryServiceImpl @Autowired constructor(
                 .findById(id.toLong()).orElse(null))
     }
 
+    // TODO in userGroupRepo
     override fun getAllUserGroups(): List<UserGroup?> {
         return userGroupEntityRepository.findAll()
             .map(jpaMapper::toDomain)
             .stream().collect(Collectors.toUnmodifiableList())
+    }
+
+    override fun getUserByUsername(username: String): User? {
+        return jpaMapper.toDomain(rep.findByUsername(username))
     }
 }
