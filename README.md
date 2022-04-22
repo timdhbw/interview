@@ -64,4 +64,5 @@ Running the application:
 
 # Api documentation
 
-The documentation of the api can be found [here](doku/index.adoc).
+The documentation of the api can be found [here](doku/index.adoc). All paths has the prefix "api/", 
+e.g. http://localhost:8080/api/users/register to register a new user.

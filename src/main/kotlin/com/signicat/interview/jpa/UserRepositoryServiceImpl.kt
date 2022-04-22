@@ -7,8 +7,6 @@ import com.signicat.interview.jpa.entities.SubjectEntity
 import com.signicat.interview.jpa.mapper.JpaMapper
 import com.signicat.interview.jpa.repositories.SubjectEntityRepository
 import com.signicat.interview.jpa.repositories.UserGroupEntityRepository
-import org.slf4j.Logger
-import org.slf4j.LoggerFactory
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.stereotype.Component
 import java.util.stream.Collectors

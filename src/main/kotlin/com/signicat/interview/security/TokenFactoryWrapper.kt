@@ -5,11 +5,11 @@ import com.nimbusds.jose.jwk.gen.ECKeyGenerator
 import org.springframework.stereotype.Component
 
 @Component
-class TokenFactoryWrapper {
+class TokenFactoryWrapper() {
 
-    val tokenFactory: TokenFactory
+    final val tokenFactory: TokenFactory
 
-    constructor() {
+    init {
         val key = ECKeyGenerator(Curve.P_256)
             .keyID("0")
             .generate()

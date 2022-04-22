@@ -38,7 +38,7 @@ class TokenFactory(
         JWSHeader.Builder(ES256)
             .type(JWT)
             .keyID(key.keyID)
-            .build();
+            .build()
 
     private fun createClaimsSet() =
         JWTClaimsSet.Builder()
