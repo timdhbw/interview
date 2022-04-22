@@ -13,4 +13,8 @@ class UserServiceImpl @Autowired constructor(val userRepositoryService: UserRepo
         return userRepositoryService.save(user)
     }
 
+    override fun login(username: String, password: String): String {
+        TODO("Not yet implemented")
+    }
+
 }

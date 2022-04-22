@@ -5,6 +5,7 @@
 */
 package com.signicat.interview.gen.api
 
+import com.signicat.interview.gen.api.model.InlineObjectDto
 import com.signicat.interview.gen.api.model.UserDto
 import org.springframework.http.ResponseEntity
 import org.springframework.validation.annotation.Validated
@@ -31,11 +32,23 @@ interface UsersApi {
 
     @RequestMapping(
             method = [RequestMethod.POST],
+            value = ["/users/login"],
+            produces = ["application/json"],
+            consumes = ["application/json"]
+    )
+    fun login( @RequestBody inlineObjectDto: InlineObjectDto
+): ResponseEntity<kotlin.String> {
+        return getDelegate().login(inlineObjectDto);
+    }
+
+
+    @RequestMapping(
+            method = [RequestMethod.POST],
             value = ["/users/register"],
             produces = ["application/json"],
             consumes = ["application/json"]
     )
-    fun registerUser(@RequestBody userDto: UserDto
+    fun registerUser( @RequestBody userDto: UserDto
 ): ResponseEntity<UserDto> {
         return getDelegate().registerUser(userDto);
     }

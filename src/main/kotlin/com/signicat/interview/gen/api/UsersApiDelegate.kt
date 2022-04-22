@@ -1,5 +1,6 @@
 package com.signicat.interview.gen.api
 
+import com.signicat.interview.gen.api.model.InlineObjectDto
 import com.signicat.interview.gen.api.model.UserDto
 import org.springframework.http.HttpStatus
 import org.springframework.http.MediaType
@@ -28,13 +29,22 @@ interface UsersApiDelegate {
 
 
     /**
+     * @see UsersApi#login
+     */
+    fun login(inlineObjectDto: InlineObjectDto): ResponseEntity<kotlin.String> {
+        return ResponseEntity(HttpStatus.NOT_IMPLEMENTED)
+
+    }
+
+
+    /**
      * @see UsersApi#registerUser
      */
     fun registerUser(userDto: UserDto): ResponseEntity<UserDto> {
         getRequest().ifPresent { request ->
             for (mediaType in MediaType.parseMediaTypes(request.getHeader("Accept"))) {
                 if (mediaType.isCompatibleWith(MediaType.valueOf("application/json"))) {
-                    ApiUtil.setExampleResponse(request, "application/json", "{  \"password\" : \"password\",  \"userGroupNames\" : [ \"userGroupNames\", \"userGroupNames\" ],  \"userId\" : 0,  \"username\" : \"username\"}")
+                    ApiUtil.setExampleResponse(request, "application/json", "{  \"password\" : \"password\",  \"userGroupNames\" : [ \"userGroupNames\", \"userGroupNames\" ],  \"id\" : 0,  \"username\" : \"username\"}")
                     break
                 }
             }

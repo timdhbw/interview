@@ -6,6 +6,7 @@ import com.signicat.interview.domain.services.interfaces.UserGroupService
 import com.signicat.interview.domain.services.interfaces.UserService
 import com.signicat.interview.gen.api.UsergroupApiDelegate
 import com.signicat.interview.gen.api.UsersApiDelegate
+import com.signicat.interview.gen.api.model.InlineObjectDto
 import com.signicat.interview.gen.api.model.UserDto
 import com.signicat.interview.gen.api.model.UserGroupDto
 import org.springframework.beans.factory.annotation.Autowired
@@ -23,6 +24,10 @@ class ApiDelegatorImpl @Autowired constructor(
 ) :
     UsersApiDelegate, UsergroupApiDelegate {
 
+    override fun login(inlineObjectDto: InlineObjectDto): ResponseEntity<String> {
+        return ResponseEntity.ok(userService.login(inlineObjectDto.username!!, inlineObjectDto.password!!))
+    }
+
     override fun registerUser(userDto: UserDto): ResponseEntity<UserDto> {
         val user: User? = userService.registerUser(mapToDomain(userDto)!!)
         return ResponseEntity.ok(mapToDto(user))
@@ -39,9 +44,9 @@ class ApiDelegatorImpl @Autowired constructor(
     }
 
     override fun getUserGroup(id: Int): ResponseEntity<UserGroupDto> {
-        return ResponseEntity.ok(
-            apiMapper.toDto(userGroupService.getUserGroupById(id))
-        )
+        val userGroup: UserGroupDto = apiMapper.toDto(userGroupService.getUserGroupById(id))
+            ?: return ResponseEntity.notFound().build()
+        return ResponseEntity.ok(userGroup)
     }
 
     override fun deleteUsergroup(id: Int): ResponseEntity<Unit> {
