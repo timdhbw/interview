@@ -2,7 +2,7 @@ package com.signicat.interview.domain
 
 import java.util.stream.Collectors
 
-data class Subject(
+data class User(
     var id: Int?,
     var username: String,
     var password: String,

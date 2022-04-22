@@ -1,16 +1,18 @@
 package com.signicat.interview.api
 
-import com.signicat.interview.domain.Subject
+import com.signicat.interview.domain.User
 import com.signicat.interview.domain.UserGroup
-import com.signicat.interview.domain.services.UserGroupService
-import com.signicat.interview.domain.services.UserService
+import com.signicat.interview.domain.services.interfaces.UserGroupService
+import com.signicat.interview.domain.services.interfaces.UserService
+import com.signicat.interview.gen.api.UsergroupApiDelegate
 import com.signicat.interview.gen.api.UsersApiDelegate
 import com.signicat.interview.gen.api.model.UserDto
-import org.slf4j.Logger
-import org.slf4j.LoggerFactory
+import com.signicat.interview.gen.api.model.UserGroupDto
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.http.ResponseEntity
 import org.springframework.stereotype.Component
+import org.springframework.web.context.request.NativeWebRequest
+import java.util.*
 import java.util.stream.Collectors
 
 @Component
@@ -19,34 +21,58 @@ class ApiDelegatorImpl @Autowired constructor(
     val apiMapper: ApiMapper,
     val userGroupService: UserGroupService
 ) :
-    UsersApiDelegate {
+    UsersApiDelegate, UsergroupApiDelegate {
 
     override fun registerUser(userDto: UserDto): ResponseEntity<UserDto> {
-        val logger: Logger = LoggerFactory.getLogger(ApiDelegatorImpl::class.java.name)
-        logger.info("Register User: {}", userDto)
-        val subject: Subject? = userService.registerUser(mapToDomain(userDto)!!)
-        return ResponseEntity.ok(mapToDto(subject))
+        val user: User? = userService.registerUser(mapToDomain(userDto)!!)
+        return ResponseEntity.ok(mapToDto(user))
+    }
+
+    override fun createUserGroup(userGroupDto: UserGroupDto): ResponseEntity<UserGroupDto> {
+        return updateUserGroup(userGroupDto)
+    }
+
+    override fun updateUserGroup(userGroupDto: UserGroupDto): ResponseEntity<UserGroupDto> {
+        val userGroup: UserGroup = apiMapper.toDomain(userGroupDto) ?: return ResponseEntity.badRequest().build()
+        return ResponseEntity.ok(apiMapper.toDto(userGroupService
+            .createOrUpdateUserGroup(userGroup)))
+    }
+
+    override fun getUserGroup(id: Int): ResponseEntity<UserGroupDto> {
+        return ResponseEntity.ok(
+            apiMapper.toDto(userGroupService.getUserGroupById(id))
+        )
+    }
+
+    override fun deleteUsergroup(id: Int): ResponseEntity<Unit> {
+        val deleted: Boolean = userGroupService.deleteUserGroup(id)
+        if (deleted) {
+            return ResponseEntity.ok().build()
+        }
+        return ResponseEntity.badRequest().build()
     }
 
     override fun getTest(): ResponseEntity<String> {
         return ResponseEntity.ok("Testresponse")
     }
 
-    internal fun mapToDomain(userDto: UserDto?): Subject? {
+    override fun getRequest(): Optional<NativeWebRequest> = Optional.empty()
+
+    internal fun mapToDomain(userDto: UserDto?): User? {
         if (userDto == null) {
             return null
         }
-        val subject: Subject = apiMapper.toDomain(userDto)!!
-        subject.groups = userGroupService.getUserGroupsForUserGroupKeys(userDto.userGroupNames)
-        return subject
+        val user: User = apiMapper.toDomain(userDto)!!
+        user.groups = userGroupService.getUserGroupsForUserGroupKeys(userDto.userGroupNames)
+        return user
     }
 
-    internal fun mapToDto(subject: Subject?): UserDto? {
-        if (subject == null) {
+    internal fun mapToDto(user: User?): UserDto? {
+        if (user == null) {
             return null
         }
-        val userDto: UserDto = apiMapper.toDto(subject)!!
-        userDto.userGroupNames = subject.groups.stream().map(UserGroup::name).collect(Collectors.toList())
+        val userDto: UserDto = apiMapper.toDto(user)!!
+        userDto.userGroupNames = user.groups.stream().map(UserGroup::name).collect(Collectors.toList())
         return userDto
     }
 }

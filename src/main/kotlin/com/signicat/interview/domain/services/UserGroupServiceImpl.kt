@@ -1,20 +1,29 @@
 package com.signicat.interview.domain.services
 
 import com.signicat.interview.domain.UserGroup
+import com.signicat.interview.domain.services.interfaces.UserGroupRepositoryService
+import com.signicat.interview.domain.services.interfaces.UserGroupService
+import com.signicat.interview.domain.services.interfaces.UserRepositoryService
 import org.springframework.beans.factory.annotation.Autowired
-import org.springframework.stereotype.Component
 import org.springframework.stereotype.Service
 import java.util.*
 import java.util.stream.Collectors
 
 @Service
-class UserGroupServiceImpl @Autowired constructor(val userRepositoryService: UserRepositoryService): UserGroupService {
-    override fun createOrModifyUserGroup(userGroup: UserGroup): UserGroup {
-        TODO("Not yet implemented")
+class UserGroupServiceImpl @Autowired constructor(
+    val userRepositoryService: UserRepositoryService,
+    val userGroupRepositoryService: UserGroupRepositoryService
+    ): UserGroupService {
+    override fun createOrUpdateUserGroup(userGroup: UserGroup): UserGroup {
+        return userGroupRepositoryService.createOrUpdateUserGroup(userGroup)
     }
 
-    override fun deleteUserGroup(userId: Long): Boolean {
-        TODO("Not yet implemented")
+    override fun deleteUserGroup(userId: Int): Boolean {
+        return userGroupRepositoryService.deleteUserGroupById(userId)
+    }
+
+    override fun getUserGroupById(id: Int): UserGroup? {
+        return userGroupRepositoryService.getUserGroupById(id)
     }
 
     override fun getUserGroupsForUserGroupKeys(userGroupKeys: List<String>?): Set<UserGroup> {

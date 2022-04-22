@@ -1,8 +1,10 @@
 type: object
 name: UserGroup
 properties:
-  userGroupId:
+  id:
     type: integer
-  userGroupName:
+  name:
     type: string
+  defaultUser:
+    type: boolean
 

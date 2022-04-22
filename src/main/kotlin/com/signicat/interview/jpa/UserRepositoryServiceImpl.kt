@@ -1,9 +1,8 @@
 package com.signicat.interview.jpa
 
-import com.signicat.interview.domain.Subject
+import com.signicat.interview.domain.User
 import com.signicat.interview.domain.UserGroup
-import com.signicat.interview.domain.services.UserRepositoryService
-import com.signicat.interview.domain.services.UserServiceImpl
+import com.signicat.interview.domain.services.interfaces.UserRepositoryService
 import com.signicat.interview.jpa.entities.SubjectEntity
 import com.signicat.interview.jpa.mapper.JpaMapper
 import com.signicat.interview.jpa.repositories.SubjectEntityRepository
@@ -20,14 +19,14 @@ class UserRepositoryServiceImpl @Autowired constructor(
     val userGroupEntityRepository: UserGroupEntityRepository,
     val jpaMapper: JpaMapper): UserRepositoryService {
 
-    override fun save(subject: Subject?): Subject? {
-        val entity: SubjectEntity = jpaMapper.toEntity(subject) ?: return null
+    override fun save(user: User?): User? {
+        val entity: SubjectEntity = jpaMapper.toEntity(user) ?: return null
         val logger: Logger = LoggerFactory.getLogger(UserRepositoryServiceImpl::class.java.name)
         logger.info("(Repository)Register User: {}", entity)
         return jpaMapper.toDomain(rep.save(entity))
     }
 
-    override fun get(id: Int?): Subject? {
+    override fun get(id: Int?): User? {
         if (id == null) {
             return null
         }

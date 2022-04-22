@@ -1,20 +1,24 @@
 package com.signicat.interview.api
 
-import com.signicat.interview.domain.Subject
+import com.signicat.interview.domain.User
 import com.signicat.interview.domain.UserGroup
 import com.signicat.interview.gen.api.model.UserDto
-import org.mapstruct.AfterMapping
+import com.signicat.interview.gen.api.model.UserGroupDto
 import org.mapstruct.Mapper
 import org.mapstruct.Mapping
-import org.mapstruct.TargetType
-import java.util.stream.Collectors
 
 @Mapper
 interface ApiMapper {
 
     @Mapping(target = "userGroupNames", ignore = true)
-    fun toDto(user: Subject?): UserDto?
+    fun toDto(user: User?): UserDto?
+
+    fun toDto(userGroup: UserGroup?): UserGroupDto?
 
     @Mapping(target = "groups", ignore = true)
-    fun toDomain(user: UserDto?): Subject?
+    fun toDomain(user: UserDto?): User?
+
+    @Mapping(target = "defaultUser", ignore = true)
+    fun toDomain(userGroupDto: UserGroupDto?): UserGroup?
+
 }
