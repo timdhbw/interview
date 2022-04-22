@@ -16,3 +16,5 @@ management:
     web:
       exposure:
         include: "*"
+encrypt:
+  salt: qpwi7+ZkwFJ4U/8x-QVdnp4El.W-COIk
