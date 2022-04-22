@@ -4,14 +4,17 @@ import com.fasterxml.jackson.annotation.JsonProperty
 
 /**
  * 
- * @param userGroupId 
- * @param userGroupName 
+ * @param id 
+ * @param name 
+ * @param defaultUser 
  */
 data class UserGroupDto(
 
-    @field:JsonProperty("userGroupId") var id: kotlin.Int? = null,
+    @field:JsonProperty("id") var id: kotlin.Int? = null,
 
-    @field:JsonProperty("userGroupName") var name: kotlin.String? = null
+    @field:JsonProperty("name") var name: kotlin.String? = null,
+
+    @field:JsonProperty("defaultUser") var defaultUser: kotlin.Boolean? = null
 ) {
 
 }

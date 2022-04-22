@@ -18,7 +18,6 @@ interface ApiMapper {
     @Mapping(target = "groups", ignore = true)
     fun toDomain(user: UserDto?): User?
 
-    @Mapping(target = "defaultUser", ignore = true)
     fun toDomain(userGroupDto: UserGroupDto?): UserGroup?
 
 }

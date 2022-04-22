@@ -29,16 +29,82 @@ paths:
               schema:
                 $ref: 'schemas/user.yml'
   /users/test:
-     get:
-       summary: Test
-       operationId: getTest
-       responses:
-         '200':
-           description: Test Request
-           content:
-             application/json:
-               schema:
-                 type: string
+    get:
+      summary: Test
+      operationId: getTest
+      responses:
+        '200':
+          description: Test Request
+          content:
+            application/json:
+              schema:
+                type: string
+  /usergroup:
+    put:
+      summary: Creates new User Group
+      operationId: createUserGroup
+      security:
+        - jwt: []
+      requestBody:
+        description: UserGroup to create
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: 'schemas/userGroup.yml'
+      responses:
+        '200':
+          description: created UserGroup
+          content:
+            application/json:
+              schema:
+                $ref: 'schemas/userGroup.yml'
+    post:
+      summary: Update UserGroup
+      operationId: updateUserGroup
+      security:
+        - jwt: [ ]
+      requestBody:
+        description: UserGroup to update
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: 'schemas/userGroup.yml'
+      responses:
+        '200':
+          description: updated UserGroup
+          content:
+            application/json:
+              schema:
+                $ref: 'schemas/userGroup.yml'
+  /usergroup/{id}:
+    parameters:
+      - in: path
+        name: id
+        required: true
+        schema:
+          type: integer
+    delete:
+      summary: Delete usergroup of id
+      operationId: deleteUsergroup
+      security:
+        - jwt: []
+      responses:
+        '200':
+          description: deleted
+    get:
+      summary: Get usergroup of id
+      operationId: getUserGroup
+      security:
+        - jwt: []
+      responses:
+        '200':
+          description: UserGroup
+          content:
+            application/json:
+              schema:
+                $ref: 'schemas/userGroup.yml'
 
 components:
   securitySchemes:
