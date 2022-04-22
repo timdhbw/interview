@@ -6,6 +6,7 @@ import com.signicat.interview.jpa.mapper.JpaMapper
 import com.signicat.interview.jpa.repositories.UserGroupEntityRepository
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.stereotype.Component
+import java.util.stream.Collectors
 
 @Component
 class UserGroupRepositoryServiceImpl @Autowired constructor(
@@ -31,5 +32,12 @@ class UserGroupRepositoryServiceImpl @Autowired constructor(
             userGroupEntityRepository
                 .findById(id.toLong()).orElse(null)
         )
+    }
+
+    // TODO in userGroupRepo
+    override fun getAllUserGroups(): List<UserGroup?> {
+        return userGroupEntityRepository.findAll()
+            .map(jpaMapper::toDomain)
+            .stream().collect(Collectors.toUnmodifiableList())
     }
 }

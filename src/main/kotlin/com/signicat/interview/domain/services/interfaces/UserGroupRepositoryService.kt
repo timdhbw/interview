@@ -6,4 +6,5 @@ interface UserGroupRepositoryService {
     fun deleteUserGroupById(userId: Int): Boolean
     fun createOrUpdateUserGroup(userGroup: UserGroup): UserGroup
     fun getUserGroupById(id: Int): UserGroup?
+    fun getAllUserGroups(): List<UserGroup?>
 }

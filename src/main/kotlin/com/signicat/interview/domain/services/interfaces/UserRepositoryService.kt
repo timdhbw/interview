@@ -9,7 +9,5 @@ interface UserRepositoryService {
 
     fun get(id: Int?): User?
 
-    fun getAllUserGroups(): List<UserGroup?>
-
     fun getUserByUsername(username: String): User?
 }

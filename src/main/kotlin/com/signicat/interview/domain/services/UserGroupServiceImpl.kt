@@ -3,7 +3,6 @@ package com.signicat.interview.domain.services
 import com.signicat.interview.domain.UserGroup
 import com.signicat.interview.domain.services.interfaces.UserGroupRepositoryService
 import com.signicat.interview.domain.services.interfaces.UserGroupService
-import com.signicat.interview.domain.services.interfaces.UserRepositoryService
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.stereotype.Service
 import java.util.*
@@ -11,7 +10,6 @@ import java.util.stream.Collectors
 
 @Service
 class UserGroupServiceImpl @Autowired constructor(
-    val userRepositoryService: UserRepositoryService,
     val userGroupRepositoryService: UserGroupRepositoryService
     ): UserGroupService {
     override fun createOrUpdateUserGroup(userGroup: UserGroup): UserGroup {
@@ -41,12 +39,12 @@ class UserGroupServiceImpl @Autowired constructor(
     }
 
     internal fun getUserGroupByKey(key: String): UserGroup? {
-        return userRepositoryService.getAllUserGroups()
+        return userGroupRepositoryService.getAllUserGroups()
             .filterNotNull().firstOrNull { ug -> key.lowercase() == ug.name.lowercase() }
     }
 
     internal fun getDefaultUserGroups(): MutableSet<UserGroup> {
-        return userRepositoryService
+        return userGroupRepositoryService
             .getAllUserGroups()
             .filterNotNull()
             .filter(UserGroup::defaultUser)
