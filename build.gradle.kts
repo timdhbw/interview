@@ -80,6 +80,12 @@ tasks.withType<KotlinCompile> {
             )
         )
     }
+
+//    openApiGenerate {
+//        generatorName.set("asciidoc")
+//        inputSpec.set(spec)
+//        outputDir.set("$rootDir/doku")
+//    }
 }
 
 tasks.withType<Test> {

@@ -60,3 +60,8 @@ Running the application:
 ```docker-compose up```
 
 ```./gradlew bRu```
+
+
+# Api documentation
+
+The documentation of the api can be found [here](doku/index.adoc).

@@ -39,13 +39,10 @@ paths:
           application/json:
             schema:
               type: object
-              required: true
               properties:
                 username:
-                  required: true
                   type: string
                 password:
-                  required: true
                   type: string
       responses:
         '200':

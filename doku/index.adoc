@@ -1,0 +1,695 @@
+= User API
+team@openapitools.org
+0.9.0
+:toc: left
+:numbered:
+:toclevels: 3
+:source-highlighter: highlightjs
+:keywords: openapi, rest, User API
+:specDir: 
+:snippetDir: 
+:generator-template: v1 2019-12-20
+:info-url: https://openapi-generator.tech
+:app-name: User API
+
+[abstract]
+.Abstract
+Api to register a user and create a login
+
+
+// markup not found, no include::{specDir}intro.adoc[opts=optional]
+
+
+== Access
+
+
+* *Bearer* Authentication 
+
+
+
+
+== Endpoints
+
+
+[.Default]
+=== Default
+
+
+[.createUserGroup]
+==== createUserGroup
+
+`PUT /usergroup`
+
+Creates new User Group
+
+===== Description
+
+
+
+
+// markup not found, no include::{specDir}usergroup/PUT/spec.adoc[opts=optional]
+
+
+
+===== Parameters
+
+
+====== Body Parameter
+
+[cols="2,3,1,1,1"]
+|===
+|Name| Description| Required| Default| Pattern
+
+| UserGroup
+| UserGroup to create <<UserGroup>>
+| X
+| 
+| 
+
+|===
+
+
+
+
+
+===== Return Type
+
+<<userGroup>>
+
+
+===== Content Type
+
+* application/json
+
+===== Responses
+
+.http response codes
+[cols="2,3,1"]
+|===
+| Code | Message | Datatype
+
+
+| 200
+| created UserGroup
+|  <<userGroup>>
+
+|===
+
+===== Samples
+
+
+// markup not found, no include::{snippetDir}usergroup/PUT/http-request.adoc[opts=optional]
+
+
+// markup not found, no include::{snippetDir}usergroup/PUT/http-response.adoc[opts=optional]
+
+
+
+// file not found, no * wiremock data link :usergroup/PUT/PUT.json[]
+
+
+ifdef::internal-generation[]
+===== Implementation
+
+// markup not found, no include::{specDir}usergroup/PUT/implementation.adoc[opts=optional]
+
+
+endif::internal-generation[]
+
+
+[.deleteUsergroup]
+==== deleteUsergroup
+
+`DELETE /usergroup/{id}`
+
+Delete usergroup of id
+
+===== Description
+
+
+
+
+// markup not found, no include::{specDir}usergroup/\{id\}/DELETE/spec.adoc[opts=optional]
+
+
+
+===== Parameters
+
+====== Path Parameters
+
+[cols="2,3,1,1,1"]
+|===
+|Name| Description| Required| Default| Pattern
+
+| id
+|  
+| X
+| null
+| 
+
+|===
+
+
+
+
+
+
+===== Return Type
+
+
+
+-
+
+
+===== Responses
+
+.http response codes
+[cols="2,3,1"]
+|===
+| Code | Message | Datatype
+
+
+| 200
+| deleted
+|  <<>>
+
+|===
+
+===== Samples
+
+
+// markup not found, no include::{snippetDir}usergroup/\{id\}/DELETE/http-request.adoc[opts=optional]
+
+
+// markup not found, no include::{snippetDir}usergroup/\{id\}/DELETE/http-response.adoc[opts=optional]
+
+
+
+// file not found, no * wiremock data link :usergroup/{id}/DELETE/DELETE.json[]
+
+
+ifdef::internal-generation[]
+===== Implementation
+
+// markup not found, no include::{specDir}usergroup/\{id\}/DELETE/implementation.adoc[opts=optional]
+
+
+endif::internal-generation[]
+
+
+[.getTest]
+==== getTest
+
+`GET /users/test`
+
+Test
+
+===== Description
+
+
+
+
+// markup not found, no include::{specDir}users/test/GET/spec.adoc[opts=optional]
+
+
+
+===== Parameters
+
+
+
+
+
+
+
+===== Return Type
+
+
+<<String>>
+
+
+===== Content Type
+
+* application/json
+
+===== Responses
+
+.http response codes
+[cols="2,3,1"]
+|===
+| Code | Message | Datatype
+
+
+| 200
+| Test Request
+|  <<String>>
+
+|===
+
+===== Samples
+
+
+// markup not found, no include::{snippetDir}users/test/GET/http-request.adoc[opts=optional]
+
+
+// markup not found, no include::{snippetDir}users/test/GET/http-response.adoc[opts=optional]
+
+
+
+// file not found, no * wiremock data link :users/test/GET/GET.json[]
+
+
+ifdef::internal-generation[]
+===== Implementation
+
+// markup not found, no include::{specDir}users/test/GET/implementation.adoc[opts=optional]
+
+
+endif::internal-generation[]
+
+
+[.getUserGroup]
+==== getUserGroup
+
+`GET /usergroup/{id}`
+
+Get usergroup of id
+
+===== Description
+
+
+
+
+// markup not found, no include::{specDir}usergroup/\{id\}/GET/spec.adoc[opts=optional]
+
+
+
+===== Parameters
+
+====== Path Parameters
+
+[cols="2,3,1,1,1"]
+|===
+|Name| Description| Required| Default| Pattern
+
+| id
+|  
+| X
+| null
+| 
+
+|===
+
+
+
+
+
+
+===== Return Type
+
+<<userGroup>>
+
+
+===== Content Type
+
+* application/json
+
+===== Responses
+
+.http response codes
+[cols="2,3,1"]
+|===
+| Code | Message | Datatype
+
+
+| 200
+| UserGroup
+|  <<userGroup>>
+
+|===
+
+===== Samples
+
+
+// markup not found, no include::{snippetDir}usergroup/\{id\}/GET/http-request.adoc[opts=optional]
+
+
+// markup not found, no include::{snippetDir}usergroup/\{id\}/GET/http-response.adoc[opts=optional]
+
+
+
+// file not found, no * wiremock data link :usergroup/{id}/GET/GET.json[]
+
+
+ifdef::internal-generation[]
+===== Implementation
+
+// markup not found, no include::{specDir}usergroup/\{id\}/GET/implementation.adoc[opts=optional]
+
+
+endif::internal-generation[]
+
+
+[.login]
+==== login
+
+`POST /users/login`
+
+login
+
+===== Description
+
+
+
+
+// markup not found, no include::{specDir}users/login/POST/spec.adoc[opts=optional]
+
+
+
+===== Parameters
+
+
+====== Body Parameter
+
+[cols="2,3,1,1,1"]
+|===
+|Name| Description| Required| Default| Pattern
+
+| InlineObject
+|  <<InlineObject>>
+| X
+| 
+| 
+
+|===
+
+
+
+
+
+===== Return Type
+
+
+<<String>>
+
+
+===== Content Type
+
+* application/json
+
+===== Responses
+
+.http response codes
+[cols="2,3,1"]
+|===
+| Code | Message | Datatype
+
+
+| 200
+| JWA Token
+|  <<String>>
+
+|===
+
+===== Samples
+
+
+// markup not found, no include::{snippetDir}users/login/POST/http-request.adoc[opts=optional]
+
+
+// markup not found, no include::{snippetDir}users/login/POST/http-response.adoc[opts=optional]
+
+
+
+// file not found, no * wiremock data link :users/login/POST/POST.json[]
+
+
+ifdef::internal-generation[]
+===== Implementation
+
+// markup not found, no include::{specDir}users/login/POST/implementation.adoc[opts=optional]
+
+
+endif::internal-generation[]
+
+
+[.registerUser]
+==== registerUser
+
+`POST /users/register`
+
+Register a user.
+
+===== Description
+
+User object that will be created
+
+
+// markup not found, no include::{specDir}users/register/POST/spec.adoc[opts=optional]
+
+
+
+===== Parameters
+
+
+====== Body Parameter
+
+[cols="2,3,1,1,1"]
+|===
+|Name| Description| Required| Default| Pattern
+
+| User
+| User Entity <<User>>
+| X
+| 
+| 
+
+|===
+
+
+
+
+
+===== Return Type
+
+<<user>>
+
+
+===== Content Type
+
+* application/json
+
+===== Responses
+
+.http response codes
+[cols="2,3,1"]
+|===
+| Code | Message | Datatype
+
+
+| 200
+| Registered User
+|  <<user>>
+
+|===
+
+===== Samples
+
+
+// markup not found, no include::{snippetDir}users/register/POST/http-request.adoc[opts=optional]
+
+
+// markup not found, no include::{snippetDir}users/register/POST/http-response.adoc[opts=optional]
+
+
+
+// file not found, no * wiremock data link :users/register/POST/POST.json[]
+
+
+ifdef::internal-generation[]
+===== Implementation
+
+// markup not found, no include::{specDir}users/register/POST/implementation.adoc[opts=optional]
+
+
+endif::internal-generation[]
+
+
+[.updateUserGroup]
+==== updateUserGroup
+
+`POST /usergroup`
+
+Update UserGroup
+
+===== Description
+
+
+
+
+// markup not found, no include::{specDir}usergroup/POST/spec.adoc[opts=optional]
+
+
+
+===== Parameters
+
+
+====== Body Parameter
+
+[cols="2,3,1,1,1"]
+|===
+|Name| Description| Required| Default| Pattern
+
+| UserGroup
+| UserGroup to update <<UserGroup>>
+| X
+| 
+| 
+
+|===
+
+
+
+
+
+===== Return Type
+
+<<userGroup>>
+
+
+===== Content Type
+
+* application/json
+
+===== Responses
+
+.http response codes
+[cols="2,3,1"]
+|===
+| Code | Message | Datatype
+
+
+| 200
+| updated UserGroup
+|  <<userGroup>>
+
+|===
+
+===== Samples
+
+
+// markup not found, no include::{snippetDir}usergroup/POST/http-request.adoc[opts=optional]
+
+
+// markup not found, no include::{snippetDir}usergroup/POST/http-response.adoc[opts=optional]
+
+
+
+// file not found, no * wiremock data link :usergroup/POST/POST.json[]
+
+
+ifdef::internal-generation[]
+===== Implementation
+
+// markup not found, no include::{specDir}usergroup/POST/implementation.adoc[opts=optional]
+
+
+endif::internal-generation[]
+
+
+[#models]
+== Models
+
+
+[#InlineObject]
+=== _InlineObject_ 
+
+
+
+[.fields-InlineObject]
+[cols="2,1,2,4,1"]
+|===
+| Field Name| Required| Type| Description| Format
+
+| username
+| 
+| String 
+| 
+|  
+
+| password
+| 
+| String 
+| 
+|  
+
+|===
+
+
+[#User]
+=== _User_ 
+
+
+
+[.fields-User]
+[cols="2,1,2,4,1"]
+|===
+| Field Name| Required| Type| Description| Format
+
+| id
+| 
+| Integer 
+| 
+|  
+
+| username
+| 
+| String 
+| 
+|  
+
+| password
+| 
+| String 
+| 
+|  
+
+| userGroupNames
+| 
+| List  of <<string>>
+| 
+|  
+
+|===
+
+
+[#UserGroup]
+=== _UserGroup_ 
+
+
+
+[.fields-UserGroup]
+[cols="2,1,2,4,1"]
+|===
+| Field Name| Required| Type| Description| Format
+
+| id
+| 
+| Integer 
+| 
+|  
+
+| name
+| 
+| String 
+| 
+|  
+
+| defaultUser
+| 
+| Boolean 
+| 
+|  
+
+|===
+
+
